@@ -1,8 +1,8 @@
 const express = require(`express`);
 const router = express.Router();
 
-const tweets = require(`./tweets`);
-const users = require(`./users`);
+const tweets = require(`./controllers/tweets`);
+const users = require(`./controllers/users`);
 
 const logger = require(`./middlewares/logger`);
 

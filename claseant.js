@@ -10,7 +10,7 @@ const bcrypt = require('bcryptjs'); //para el cifrado de contraseñas
 
 //llamado a carpetas
 const config = require('./config');
-const tweets = require(`./api/tweets`);
+const tweets = require(`./api/controllers/tweets`);
 
 const app = express();
 
