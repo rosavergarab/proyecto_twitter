@@ -1,23 +1,23 @@
 const express = require(`express`);
 const router = express.Router();
 
-const tweets = require(`./../../services/tweets`);
+const moduloTweets = require(`./../../services/tweets`);
 
 router.use(express.json());
 
 router.route(`/`)
     .get((req, res)=>{
-        res.send(tweets.cargarTweet());
+        res.status(200).send(moduloTweets.cargarTweet());
     })
     .post((req, res)=>{
         const tweet ={
-            id: tweets.longitudTweet(),
+            id: moduloTweets.longitudTweet(),
             content: req.body.content,
             date: Date.now(),
             userId: req.body.userId
         };
-        tweets.nuevoTweet(tweet);
-        res.send(`El tweet ha sido creado`);
+        moduloTweets.nuevoTweet(tweet);
+        res.status(200).send(`El tweet ha sido creado`);
     });
 
 router.route(`/:id`)

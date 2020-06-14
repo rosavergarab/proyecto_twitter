@@ -1,6 +1,5 @@
 //declaración de los modulos a utilizar
 const express = require('express');
-const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -9,7 +8,7 @@ const config = require('./config');
 const api = require(`./api`);
 
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(`/api`, api)
 
 
