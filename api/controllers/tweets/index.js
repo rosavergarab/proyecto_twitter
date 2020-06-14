@@ -2,6 +2,8 @@ const express = require(`express`);
 const router = express.Router();
 
 const moduloTweets = require(`./../../services/tweets`);
+const dateUtilities = require(`./../../utilities/date`);
+
 
 router.use(express.json());
 
@@ -13,7 +15,7 @@ router.route(`/`)
         const tweet ={
             id: moduloTweets.longitudTweet(),
             content: req.body.content,
-            date: Date().toString(),
+            date: dateUtilities.obtenerFecha(),
             userId: req.body.userId
         };
         moduloTweets.nuevoTweet(tweet);
