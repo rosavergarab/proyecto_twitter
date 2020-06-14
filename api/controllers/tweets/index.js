@@ -13,7 +13,7 @@ router.route(`/`)
         const tweet ={
             id: moduloTweets.longitudTweet(),
             content: req.body.content,
-            date: Date.now(),
+            date: Date().toString(),
             userId: req.body.userId
         };
         moduloTweets.nuevoTweet(tweet);
