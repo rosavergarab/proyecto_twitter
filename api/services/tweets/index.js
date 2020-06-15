@@ -4,7 +4,7 @@
             id: auto,
             content: string,
             date: string,
-            user: number
+            userId: number
         }
     ]
 */

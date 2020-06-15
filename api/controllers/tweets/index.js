@@ -19,7 +19,7 @@ router.route(`/`)
             userId: req.body.userId
         };
         moduloTweets.nuevoTweet(tweet);
-        res.status(200).send(`El tweet ha sido creado`);
+        res.status(200).send({message:`El tweet ha sido creado`});
     });
 
 router.route(`/:id`)
