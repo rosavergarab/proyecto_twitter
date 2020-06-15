@@ -1,13 +1,5 @@
 const config = {
     port: 80,
-    tokenKey: "my-secret-key",
-    saltRounds:10,
-    files:{
-        path: "files",
-        filename: {
-            users:"users.json",
-            accessLog: "access.log"
-        }
-    }
+    llaveApiClima:`dffe4ac272819ec55d6d6eeae5466bc1`
 };
 module.exports = config;
