@@ -8,13 +8,11 @@ router.route(`/:city`)
     .get((req, res)=>{
         const ciudad = req.params.city;
         //con fetch va a una url especifica y saca de ella una informacion que vamos a necesitar en nuestra api. En este caso necesitamos sacar información del clima
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${config.llaveApiClima}`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&appid=${config.llaveApiClima}`)
         //el resultado de lo que arroja la url la vamos a alojar en un json
-        .then(res => {
-            res.json()
-        })
+        .then(res => res.json())
         .then(json => {
-            res.send(json.main);
+            res.send({temp:json.main.temp})
         });
     });
 
