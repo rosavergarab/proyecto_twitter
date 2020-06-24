@@ -4,19 +4,21 @@ const nuevoTweet = () =>{
         content: document.getElementById(`contenido`).value,
         userId: 1
     };
-    fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(tweet),
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      }).then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response =>{
-          document.getElementById(`tweets`).innerHTML = obtenerTweet();
-          document.getElementById(`contenido`).value=``;
-          //alert(`El tweet ha sido enviado`)
-      } );
+    if(tweet.content !==``){
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(tweet),
+            headers:{
+            'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response =>{
+            document.getElementById(`tweets`).innerHTML = obtenerTweet();
+            document.getElementById(`contenido`).value=``;
+            //alert(`El tweet ha sido enviado`)
+        } );
+    };
 };
 
 const obtenerTweet = () => {
