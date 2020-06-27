@@ -1,10 +1,11 @@
 const nuevoTweet = () =>{
-    const url = `/api/tweets`
+    
     const tweet = {
         content: document.getElementById(`contenido`).value,
         userId: 1
     };
     if(tweet.content !==``){
+        const url = `/api/tweets`
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(tweet),
@@ -14,10 +15,13 @@ const nuevoTweet = () =>{
         }).then(res => res.json())
         .catch(error => console.error('Error:', error))
         .then(response =>{
-            document.getElementById(`tweets`).innerHTML = obtenerTweet();
+            document.getElementById(`contenido`).value= obtenerTweet();
             document.getElementById(`contenido`).value=``;
             //alert(`El tweet ha sido enviado`)
         } );
+    }
+    else{
+        alert(`No puede enviar un tweet en blanco`)
     };
 };
 
@@ -28,10 +32,15 @@ const obtenerTweet = () => {
     .then(res => res.json())
     .then(response => {
         const html = response.map(tweet =>{
-           return `<p> - ${tweet.content} <br />${tweet.date}</p>`
+           return `<li class="list-group-item">${tweet.content} <br /><small>${tweet.date}</small></li>`
         }).join(" ");
 
-        document.getElementById(`tweets`).innerHTML = html;
+        document.getElementById(`tweets`).innerHTML = `<ul class="list-group">
+                                                        <li class="list-group-item active">
+                                                        Tweets
+                                                        </li>
+                                                        ${html}
+                                                       </ul>`;
     });
 };
 

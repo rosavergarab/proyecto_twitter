@@ -13,27 +13,36 @@
         <span class="navbar-brand mb-0 h1">My Twitter</span>
       </nav>
     <div class="container">
-        <div class="row">
-          <div class="col-sm">
-            <form onsubmit="return false">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="contenido" aria-describedby="contentlHelp" placeholder="En qué estás pensando?">
-                  <small id="contentHelp" class="form-text text-muted">Envíanos un tweet</small>
+        <div class="row justify-content-md-center"></div>
+          <div class="row">
+            <div class="col-sm">
+              <form onsubmit="return false">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="contenido" aria-describedby="contentlHelp" placeholder="En qué estás pensando?">
+                    <small id="contentHelp" class="form-text text-muted">Envíanos un tweet</small>
+                  </div>
+                  <button type="submit" onclick="nuevoTweet()" class="btn btn-primary">Enviar</button>
+              </form> 
+              <p></p>           
+              <div id="tweets">No hay tweets para mostrar</div>
+            </div>
+            <div class="col-sm">
+              <div class="card" id="card-clima">
+                <div class="card-body">
+                  <h5 class="card-title">Clima</h5>
+                  <form onsubmit="return false">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="ciudad" aria-describedby="citylHelp" placeholder="Escribe la ciudad">
+                      <small id="cityHelp" class="form-text text-muted">¿Quieres saber del clima?</small>
+                    </div>
+                    <button type="submit" onclick="consultarClima()" class="btn btn-primary">Consultar</button>
+                  <p></p>
+                  </form>
                 </div>
-                <button type="submit" onclick="nuevoTweet()" class="btn btn-primary">Enviar</button>
-            </form>            
-            <h2>Tweets</h2>
-            <div id="tweets">No hay tweets para mostrar</div>
+              </div>
+              <div id="clima" class="alert alert-primary" role="alert"></div>
+            </div>
           </div>
-          <div class="col-sm">
-            <h2>Clima</h2>
-            <form onsubmit="return false">
-                <p><label>Ciudad <input type="text" id="ciudad"/></label></p>
-                <p><button onclick="consultarClima()">Consultar</button></p>
-            </form>
-            <div id="clima"></div>
-          </div>
-        </div>
       </div>
 
 </body>
