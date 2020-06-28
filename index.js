@@ -1,7 +1,7 @@
 //declaración de los modulos a utilizar
 const express = require('express');
 const mongoose = require(`mongoose`);
-
+const dotenv = require('dotenv').config();
 const app = express();
 
 //llamado a carpetas
@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(`/api`, api);
 app.use(express.static(`./public`));
 
-mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {useNewUrlParser: true, useUnifiedTopology: true});
 
+mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.listen(config.server.port, ()=> {
     console.log(`Servidor iniciado`);

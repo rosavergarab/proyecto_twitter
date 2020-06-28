@@ -4,26 +4,25 @@ const Tweet = require(`./../../models/tweets`);
 const User = require('./../../models/users');
 const auth  = require('./../../middlewares/auth');
 
-const moduloTweets = require(`./../../services/tweets`);
-const dateUtilities = require(`./../../utilities/date`);
+//const moduloTweets = require(`./../../services/tweets`);
+//const dateUtilities = require(`./../../utilities/date`);
 
 
 router.use(express.json());
 
 router.route(`/`)
     .get((req, res)=>{
-        //res.status(200).send(moduloTweets.cargarTweet());
-        Tweet.find({})
-        .then(tweets => {
-            res.status(200).send(tweets);
+        Tweet.find({}, (err, tweets)=>{
+            User.populate(tweets, {path: 'user'},(err, tweets)=>{
+                res.status(200).send(tweets);
+            })
         })
     })
     .post(auth,(req, res)=>{
         const tweet ={
-            //id: moduloTweets.longitudTweet(),
             content: req.body.content,
-            date: dateUtilities.obtenerFecha(),
-            //userId: req.body.userId
+            //date: dateUtilities.obtenerFecha(),
+            user: req._Id
         };
         //moduloTweets.nuevoTweet(tweet);
         Tweet.find({content: tweet.content})
@@ -49,8 +48,6 @@ router.route(`/`)
         .then(()=>{
             res.status(200).send({message: 'El elemento fue actualizado'});
         });
-
-        res.status(200).send({message: 'El tweet ha sido actualizado'});
     })
     .delete((req, res)=>{
         Tweet.remove({})
