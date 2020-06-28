@@ -1,5 +1,6 @@
 const express = require(`express`);
 const router = express.Router();
+const Tweet = require(`./../../models/tweets`);
 
 const moduloTweets = require(`./../../services/tweets`);
 const dateUtilities = require(`./../../utilities/date`);
@@ -9,7 +10,11 @@ router.use(express.json());
 
 router.route(`/`)
     .get((req, res)=>{
-        res.status(200).send(moduloTweets.cargarTweet());
+        //res.status(200).send(moduloTweets.cargarTweet());
+        Tweet.find({})
+        .then(tweets => {
+            res.status(200).send(tweets);
+        })
     })
     .post((req, res)=>{
         const tweet ={
