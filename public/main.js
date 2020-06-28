@@ -32,7 +32,7 @@ const obtenerTweet = () => {
     .then(res => res.json())
     .then(response => {
         const html = response.map(tweet =>{
-           return `<li class="list-group-item">${tweet.content} <br /><small>${tweet.date}</small></li>`
+           return `<li class="list-group-item"><a href="/tweets.html?id=${tweet._id}">${tweet.content}</a><br /><small>${tweet.date}</small></li>`
         }).join(" ");
 
         document.getElementById(`tweets`).innerHTML = `<ul class="list-group">

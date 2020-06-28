@@ -9,6 +9,10 @@ const tweetSchema = new Schema (
             type: String,
             required: true
         },
+        date: {
+            type: String,
+            required: true
+        },
         user:{
             type: Schema.ObjectId, ref: 'users'
         }
